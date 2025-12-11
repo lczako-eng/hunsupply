@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>HUN SUPPLY – Tools for Men Who Roam</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Hun Supply – premium earth-born grooming exclusively through select retailers. Trade inquiries only." />
+
+<style>
+:root{
+  --bg:#050608;
+  --bg-deep:#030304;
+  --border:#262a31;
+  --text:#f4eee2;
+  --muted:#a0947a;
+  --ember:#c86232;
+  --radius:14px;
+  --shadow:0 30px 85px rgba(0,0,0,.82);
+  --max:1080px;
+
+  --card:rgba(8,10,12,.78);
+  --line:rgba(255,255,255,.10);
+  --line2:rgba(255,255,255,.06);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(200,98,50,.11), transparent 38%),
+    radial-gradient(circle at 80% 0%, rgba(255,255,255,.06), transparent 42%),
+    radial-gradient(circle at top,#1a1d24 0%,var(--bg-deep) 58%);
+  color:var(--text);
+  min-height:100vh;
+}
+
+.grain-overlay{
+  pointer-events:none;
+  position:fixed; inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.055'/%3E%3C/svg%3E");
+  z-index:9999;
+}
+
+.page{min-height:100vh;display:flex;flex-direction:column;}
+/* ===== HEADER ===== */
+header{
+  position:sticky; top:0; z-index:50;
+  backdrop-filter: blur(14px);
+  background: linear-gradient(to bottom, rgba(5,6,8,.96), rgba(5,6,8,.88), rgba(5,6,8,.70));
+  border-bottom:1px solid rgba(255,255,255,.05);
+}
+.nav-inner{
+  max-width:var(--max);
+  margin:0 auto;
+  padding:14px 18px;
+  display:grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items:center;
+  gap:14px;
+}
+.logo-lockup{display:flex;align-items:center;gap:12px;min-width:210px;}
+.crest{
+  width:34px;height:34px;border-radius:999px;
+  border:1px solid rgba(255,255,255,.14);
+  background:radial-gradient(circle at 30% 0%,#4a3a24 0%,#090b10 55%);
+  box-shadow:0 0 0 1px rgba(0,0,0,.9);
+  display:inline-flex;align-items:center;justify-content:center;
+  font-size:12px;letter-spacing:.20em;text-transform:uppercase;
+  color:var(--muted);
+}
+.logo-main{font-size:16px;letter-spacing:.26em;text-transform:uppercase;line-height:1;}
+.logo-sub{font-size:10px;letter-spacing:.20em;text-transform:uppercase;color:var(--muted);margin-top:4px;}
+
+.nav-links{
+  display:flex;
+  gap:18px;
+  justify-content:center;
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+  user-select:none;
+}
+.nav-links a{
+  text-decoration:none;color:inherit;
+  padding:8px 4px;
+  border-bottom:1px solid transparent;
+  transition:color .18s,border-color .18s,transform .18s;
+  position:relative;
+}
+.nav-links a:hover{
+  color:var(--text);
+  border-color:rgba(255,255,255,.25);
+  transform:translateY(-1px);
+}
+.nav-links a.active{
+  color:var(--text);
+  border-color:rgba(200,98,50,.65);
+}
+.nav-links a.active::after{
+  content:"";
+  position:absolute;
+  left:50%; bottom:-10px;
+  width:6px; height:6px;
+  transform:translateX(-50%);
+  border-radius:50%;
+  background:radial-gradient(circle at 30% 0%, #ffd7b7 0%, #c86232 60%, #2a1a12 100%);
+  box-shadow:0 0 18px rgba(200,98,50,.85);
+}
+
+.nav-cta-wrap{display:flex;justify-content:flex-end;}
+.nav-cta{
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:11px 18px 10px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.22);
+  background:
+    radial-gradient(circle at 15% 0%, rgba(200,98,50,.95) 0%, rgba(58,36,25,.95) 58%),
+    linear-gradient(180deg, rgba(255,255,255,.06), transparent);
+  box-shadow: 0 26px 80px rgba(0,0,0,.86);
+  color:#fdf6e8;
+  font-size:11px;
+  letter-spacing:.30em;
+  text-transform:uppercase;
+  transition:transform .20s, box-shadow .20s, border-color .20s, filter .20s;
+  white-space:nowrap;
+}
+.nav-cta:hover{
+  transform:translateY(-2px) scale(1.02);
+  border-color:rgba(255,255,255,.36);
+  box-shadow: 0 40px 110px rgba(0,0,0,.95);
+  filter:saturate(1.05) contrast(1.05);
+}
+.dot{
+  width:8px;height:8px;border-radius:50%;
+  background:radial-gradient(circle at 30% 0%, #ffd7b7 0%, #c86232 55%, #2a1a12 100%);
+  box-shadow:0 0 18px rgba(200,98,50,.85);
+}
+
+@media (max-width: 940px){
+  .nav-inner{grid-template-columns:1fr auto; grid-template-areas:"brand cta" "links links";}
+  .logo-lockup{grid-area:brand;}
+  .nav-cta-wrap{grid-area:cta;}
+  .nav-links{grid-area:links; justify-content:flex-start; overflow:auto; padding-top:10px;}
+}
+
+/* ===== REVEAL ANIMATIONS ===== */
+.reveal{
+  opacity:0;
+  transform:translateY(16px);
+  transition:opacity .9s ease, transform .9s ease;
+  will-change:opacity,transform;
+}
+.reveal.show{
+  opacity:1;
+  transform:translateY(0);
+}
+.reveal.fast{ transition-duration:.65s; }
+.reveal.delay1{ transition-delay:.06s; }
+.reveal.delay2{ transition-delay:.12s; }
+.reveal.delay3{ transition-delay:.18s; }
+
+/* ===== HERO ===== */
+.hero{
+  min-height:92vh;
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  align-items:stretch;
+}
+.hero::after{
+  content:"";
+  position:absolute; inset:0;
+  background:
+    radial-gradient(circle at 30% 10%, rgba(255,255,255,.08), transparent 46%),
+    radial-gradient(circle at 70% 0%, rgba(200,98,50,.10), transparent 42%);
+  opacity:.9;
+  pointer-events:none;
+}
+.hero-inner{
+  max-width:var(--max);
+  margin:0 auto;
+  padding:68px 18px 78px;
+  display:grid;
+  grid-template-columns:minmax(0,1.2fr) minmax(0,.85fr);
+  gap:46px;
+  align-items:center;
+  position:relative;
+  z-index:2;
+}
+@media(max-width:880px){
+  .hero-inner{grid-template-columns:1fr; padding-top:44px;}
+}
+
+/* PARALLAX SYMBOL (hero) */
+.hero-symbol{
+  position:absolute;
+  inset:-120px;
+  background-image:url("rider.png");
+  background-repeat:no-repeat;
+  background-position:center 36%;
+  background-size:560px auto;
+  opacity:.09;
+  filter:contrast(1.1) saturate(.9);
+  mix-blend-mode:screen;
+  pointer-events:none;
+  transform:translate3d(0,0,0);
+  will-change:transform;
+  z-index:1;
+}
+
+.hero-kicker{
+  font-size:11px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--muted);
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:16px;
+}
+.hero-kicker::before{
+  content:"";
+  width:40px;height:1px;
+  background:linear-gradient(to right, rgba(255,255,255,.40), transparent);
+}
+.hero-title{
+  font-size:clamp(40px,5.4vw,58px);
+  line-height:1.0;
+  letter-spacing:.065em;
+  text-transform:uppercase;
+  margin-bottom:16px;
+}
+.hero-sub{
+  font-size:15px;
+  line-height:1.75;
+  color:#cabfa6;
+  max-width:42rem;
+  margin-bottom:26px;
+}
+.hero-oath{
+  display:flex;flex-wrap:wrap;gap:10px;
+  margin-bottom:28px;
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);
+}
+.hero-oath span{
+  padding:7px 12px 6px;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:999px;
+  background:radial-gradient(circle at 0% 0%, rgba(43,36,23,.78) 0%, rgba(5,6,8,.94) 70%);
+}
+
+.hero-actions{display:flex;flex-wrap:wrap;gap:16px;align-items:center;}
+
+.btn-primary{
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.22);
+  background:
+    radial-gradient(circle at 12% 0%, var(--ember) 0%, #3a2419 55%),
+    linear-gradient(180deg, rgba(255,255,255,.06), transparent);
+  padding:14px 22px 13px;
+  font-size:11px;
+  letter-spacing:.32em;
+  text-transform:uppercase;
+  color:#fdf6e8;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  box-shadow:var(--shadow);
+  transition:transform .20s, box-shadow .20s, border-color .20s;
+}
+.btn-primary:hover{
+  transform:translateY(-3px) scale(1.03);
+  box-shadow:0 50px 125px rgba(0,0,0,.95);
+  border-color:rgba(255,255,255,.36);
+}
+.btn-ghost{
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;
+  display:inline-flex;align-items:center;gap:10px;
+}
+.btn-ghost::after{
+  content:"";width:58px;height:1px;
+  background:linear-gradient(to right,rgba(255,255,255,.55),transparent);
+  transition:width .25s;
+}
+.btn-ghost:hover{color:var(--text);}
+.btn-ghost:hover::after{width:80px;}
+
+.hero-tagline{
+  margin-top:18px;
+  font-size:11px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+.hero-visual{
+  position:relative;
+  min-height:380px;
+  border-radius:26px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.08);
+  background:
+    radial-gradient(circle at top,rgba(255,255,255,.06) 0%,transparent 52%),
+    radial-gradient(circle at 80% 120%, rgba(51,37,24,.95) 0%, rgba(5,6,8,.98) 55%);
+  box-shadow:var(--shadow);
+}
+.hero-visual::before{
+  content:"";
+  position:absolute; inset:0;
+  background:
+    linear-gradient(to top, rgba(0,0,0,.92), rgba(0,0,0,.25)),
+    radial-gradient(circle at 20% 0%, rgba(200,98,50,.10), transparent 55%);
+}
+.hero-visual::after{
+  content:"";
+  position:absolute; inset:18px;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:inset 0 0 35px rgba(0,0,0,.9);
+}
+.hero-pill{
+  position:absolute;left:18px;bottom:18px;
+  padding:10px 14px 9px;border-radius:999px;
+  background:rgba(5,6,8,.84);
+  border:1px solid rgba(255,255,255,.16);
+  font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  color:#e7dcc6;
+  display:inline-flex;align-items:center;gap:10px;
+  backdrop-filter:blur(12px);
+}
+
+/* ===== SECTIONS ===== */
+section{padding:54px 18px 62px; position:relative;}
+.section-inner{max-width:var(--max);margin:0 auto; position:relative;}
+.section-label{
+  font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:14px;
+}
+.section-title{
+  font-size:22px;letter-spacing:.14em;text-transform:uppercase;
+  margin-bottom:12px;
+}
+.section-sub{
+  font-size:14px;color:#c0b49a;max-width:42rem;line-height:1.75;
+  margin-bottom:26px;
+}
+section:not(.hero)::before{
+  content:"";
+  position:absolute;
+  top:0; left:50%;
+  transform:translateX(-50%);
+  width:min(var(--max), calc(100% - 36px));
+  height:1px;
+  background:linear-gradient(to right,transparent,var(--line2),transparent);
+}
+
+/* PARALLAX SYMBOL (sections) */
+.section-symbol{
+  position:absolute;
+  right:-60px;
+  top:14px;
+  width:300px;
+  height:300px;
+  background:url("rider.png") no-repeat center / contain;
+  opacity:.055;
+  filter:contrast(1.1) saturate(.95);
+  mix-blend-mode:screen;
+  pointer-events:none;
+  transform:translate3d(0,0,0);
+  will-change:transform;
+}
+@media(max-width:880px){
+  .section-symbol{display:none;}
+}
+
+/* Blocks */
+.block{
+  padding:22px 20px;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.10);
+  background:
+    radial-gradient(circle at 20% 0%, rgba(200,98,50,.10), transparent 55%),
+    linear-gradient(180deg, rgba(12,14,18,.88), rgba(6,7,9,.88));
+  box-shadow:0 26px 60px rgba(0,0,0,.70);
+}
+.block h3{
+  font-size:12px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:#e7dcc6;
+  margin-bottom:12px;
+}
+.block p{
+  color:#cbbfa6;
+  line-height:1.8;
+  font-size:14px;
+  margin-bottom:12px;
+}
+.block p:last-child{margin-bottom:0;}
+
+/* ===== PRODUCTS ===== */
+.products-grid{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:16px;
+  margin-top:18px;
+}
+@media(max-width:980px){ .products-grid{grid-template-columns:repeat(2, minmax(0, 1fr));} }
+@media(max-width:560px){ .products-grid{grid-template-columns:1fr;} }
+
+.product-card{
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.11);
+  background:
+    radial-gradient(circle at 15% 0%, rgba(200,98,50,.12), transparent 55%),
+    linear-gradient(180deg, rgba(10,12,16,.93), rgba(6,7,9,.93));
+  box-shadow:0 22px 55px rgba(0,0,0,.70);
+  padding:18px 18px 14px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  min-height:218px;
+  transition:transform .22s, border-color .22s, box-shadow .22s;
+  position:relative;
+  overflow:hidden;
+}
+.product-card::after{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  background:
+    radial-gradient(circle at 30% 10%, rgba(255,255,255,.06), transparent 45%),
+    radial-gradient(circle at 80% 120%, rgba(200,98,50,.14), transparent 55%);
+  opacity:.75;
+  pointer-events:none;
+}
+.product-card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(255,255,255,.18);
+  box-shadow:0 40px 95px rgba(0,0,0,.92);
+}
+
+/* ===== STOCKISTS (LUXURY LIST) ===== */
+.stockists{
+  border-radius:22px;
+  border:1px solid rgba(255,255,255,.10);
+  background:
+    radial-gradient(circle at 15% 0%, rgba(200,98,50,.10), transparent 55%),
+    linear-gradient(180deg, rgba(10,12,16,.85), rgba(5,6,8,.85));
+  box-shadow:0 26px 70px rgba(0,0,0,.75);
+  overflow:hidden;
+}
+.stockists-head{
+  padding:18px 18px 16px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  flex-wrap:wrap;
+  align-items:flex-end;
+}
+.stockists-title{
+  font-size:12px;
+  letter-spacing:.26em;
+  text-transform:uppercase;
+  color:#e7dcc6;
+}
+.stockists-note{
+  font-size:10px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.stockist-row{
+  display:grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap:14px;
+  padding:16px 18px;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.stockist-row:last-child{border-bottom:none;}
+.stockist-name{
+  font-size:13px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:#f4eee2;
+  margin-bottom:6px;
+}
+.stockist-meta{
+  color:#cbbfa6;
+  font-size:13px;
+  line-height:1.6;
+}
+.stockist-loc{
+  text-align:right;
+  color:#cbbfa6;
+  font-size:13px;
+  line-height:1.6;
+}
+.stockist-loc strong{
+  display:block;
+  font-size:10px;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:6px;
+}
+@media(max-width:720px){
+  .stockist-row{grid-template-columns:1fr;}
+  .stockist-loc{text-align:left;}
+}
+
+/* ===== TRIBE GATE + FORM ===== */
+.gate{
+  position:relative;
+  border-radius:22px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.12);
+  background:
+    radial-gradient(circle at 20% 0%, rgba(200,98,50,.14), transparent 55%),
+    linear-gradient(180deg, rgba(10,12,16,.95), rgba(5,6,8,.95));
+  box-shadow:0 42px 120px rgba(0,0,0,.92);
+  padding:26px 22px;
+}
+.gate::before{
+  content:"";
+  position:absolute; inset:-80px;
+  background:url("rider.png") no-repeat center / 520px auto;
+  opacity:.065;
+  mix-blend-mode:screen;
+  pointer-events:none;
+}
+.gate-top{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:18px;
+  flex-wrap:wrap;
+  position:relative;
+  z-index:2;
+}
+.gate-title{
+  font-size:12px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:#e7dcc6;
+}
+.gate-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:8px 12px 7px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(0,0,0,.25);
+  font-size:10px;
+  letter-spacing:.26em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.gate-body{
+  margin-top:14px;
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:16px;
+}
+@media(max-width:780px){ .gate-body{grid-template-columns:1fr;} }
+
+.req{
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(0,0,0,.22);
+  padding:16px 16px 14px;
+}
+.req h4{
+  font-size:11px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:#e7dcc6;
+  margin-bottom:10px;
+}
+.req ul{
+  list-style:none;
+  display:grid;
+  gap:10px;
+}
+.req li{
+  display:flex;
+  gap:10px;
+  color:#cbbfa6;
+  font-size:13px;
+  line-height:1.6;
+}
+.check{
+  width:10px;height:10px;border-radius:50%;
+  margin-top:4px;
+  background:radial-gradient(circle at 30% 0%, #ffd7b7 0%, #c86232 60%, #2a1a12 100%);
+  box-shadow:0 0 14px rgba(200,98,50,.75);
+  flex:0 0 10px;
+}
+
+/* trade form */
+.form-wrap{
+  margin-top:16px;
+  position:relative;
+  z-index:2;
+  border-top:1px solid rgba(255,255,255,.08);
+  padding-top:16px;
+}
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+@media(max-width:780px){ .form-grid{grid-template-columns:1fr;} }
+
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+label{
+  font-size:10px;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+input{
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(0,0,0,.25);
+  padding:12px 12px;
+  color:var(--text);
+  outline:none;
+  transition:border-color .18s, transform .18s, box-shadow .18s;
+}
+input::placeholder{color:rgba(160,148,122,.55);}
+input:focus{
+  border-color:rgba(200,98,50,.55);
+  box-shadow:0 0 0 4px rgba(200,98,50,.12);
+}
+
+.form-actions{
+  margin-top:14px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+  align-items:center;
+}
+.small-note{
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+/* ===== FOOTER ===== */
+footer{
+  padding:34px 18px 28px;
+  border-top:1px solid rgba(255,255,255,.04);
+  background:radial-gradient(circle at top,#151720 0%,#050608 60%);
+  margin-top:18px;
+}
+.footer-inner{
+  max-width:var(--max);
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  font-size:11px;
+  color:var(--muted);
+}
+.footer-row{
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  flex-wrap:wrap;
+}
+.footer-oath{
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:#cbbfa6;
+}
+
+/* ===== PRIVATE ACCESS MODAL ===== */
+.modal-backdrop{
+  position:fixed;
+  inset:0;
+  background:rgba(3,4,6,.88);
+  backdrop-filter: blur(8px);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .35s ease;
+  z-index:2000;
+}
+.modal-backdrop.show{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.modal{
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:2001;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .35s ease;
+}
+.modal.show{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.modal-card{
+  width:min(520px, calc(100% - 36px));
+  border-radius:26px;
+  border:1px solid rgba(255,255,255,.12);
+  background:
+    linear-gradient(180deg, rgba(10,12,16,.94), rgba(5,6,8,.98));
+  box-shadow:0 60px 160px rgba(0,0,0,.95);
+  padding:32px 30px 28px;
+  position:relative;
+  overflow:hidden;
+}
+
+.modal-card::before{
+  content:"";
+  position:absolute;
+  inset:-120px;
+  background:url("rider.png") no-repeat center / 480px auto;
+  opacity:.05;
+  mix-blend-mode:screen;
+  pointer-events:none;
+}
+
+.modal-eyebrow{
+  font-size:10px;
+  letter-spacing:.34em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:14px;
+}
+
+.modal-title{
+  font-size:22px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  margin-bottom:14px;
+}
+
+.modal-divider{
+  width:60px;
+  height:1px;
+  background:linear-gradient(to right, rgba(200,98,50,.75), transparent);
+  margin-bottom:18px;
+}
+
+.modal-text{
+  font-size:14px;
+  line-height:1.75;
+  color:#cbbfa6;
+  margin-bottom:26px;
+}
+
+.modal-actions{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+.btn-secondary{
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.18);
+  background:transparent;
+  padding:13px 20px;
+  font-size:11px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--muted);
+  cursor:pointer;
+}
+.btn-secondary:hover{
+  color:var(--text);
+  border-color:rgba(255,255,255,.28);
+}
+
+.modal-close{
+  position:absolute;
+  top:14px;
+  right:16px;
+  font-size:12px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--muted);
+  cursor:pointer;
+}
+.modal-close:hover{color:var(--text);}
+</style>
+</head>
+
+<body>
+<div class="grain-overlay"></div>
+
+<div class="page">
+<header>
+  <div class="nav-inner">
+    <div class="logo-lockup">
+      <div class="crest">HS</div>
+      <div>
+        <div class="logo-main">HUN SUPPLY</div>
+        <div class="logo-sub">TOOLS FOR MEN WHO ROAM</div>
+      </div>
+    </div>
+
+    <nav class="nav-links">
+      <a href="#oath">Philosophy</a>
+      <a href="#manifesto">Values</a>
+      <a href="#line">Products</a>
+      <a href="#retailers">Retail Network</a>
+      <a href="#tribe">Tribe</a>
+    </nav>
+
+    <div class="nav-cta-wrap">
+      <a class="nav-cta" href="#private-access">
+        <span class="dot"></span>
+        WHOLESALE&nbsp;INQUIRY
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero-symbol" aria-hidden="true"></div>
+
+    <div class="hero-inner">
+      <div class="hero-copy reveal">
+        <div class="hero-kicker">WHOLESALE ONLY • NOMADIC CRAFT • SELECT RETAIL</div>
+
+        <h1 class="hero-title">For modern hunters who refuse to lose.</h1>
+
+        <p class="hero-sub">
+          Hun Supply partners exclusively with select retailers to reach the men who still roam —
+          surgeons, trial lawyers, founders. Modern nomads who understand pressure, who carry reclaimed
+          leather because soul can’t be manufactured.
+        </p>
+
+        <div class="hero-oath">
+          <span>NO COMPROMISING</span>
+          <span>NO EXCEPTIONS</span>
+          <span>NO APOLOGIES</span>
+        </div>
+
+        <div class="hero-actions">
+          <a href="#private-access" class="btn-primary">
+            <span class="dot"></span>
+            WHOLESALE&nbsp;INQUIRY
+          </a>
+          <a href="#line" class="btn-ghost">VIEW THE LINE</a>
+        </div>
+
+        <div class="hero-tagline">Exclusively available through select premium retail partners.</div>
+      </div>
+
+      <div class="hero-visual reveal delay1" aria-hidden="true">
+        <div class="hero-pill">
+          <span class="dot"></span>
+          WHOLESALE • RECLAIMED CRAFT • SELECT RETAIL
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OATH -->
+  <section id="oath">
+    <div class="section-inner">
+      <div class="section-symbol" aria-hidden="true"></div>
+      <div class="section-label reveal fast">Philosophy</div>
+      <h2 class="section-title reveal">The Oath</h2>
+      <p class="section-sub reveal delay1">Replace this block with your original oath text if you want it verbatim.</p>
+
+      <div class="block reveal delay2">
+        <h3>NO COMPROMISING</h3>
+        <p>Nothing synthetic. Nothing performative. Nothing built to please the crowd.</p>
+        <p>Hun Supply exists for men who move forward under weight — and never ask permission.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- RETAIL NETWORK -->
+  <section id="retailers">
+    <div class="section-inner">
+      <div class="section-symbol" aria-hidden="true"></div>
+      <div class="section-label reveal fast">Retail Network</div>
+      <h2 class="section-title reveal">Exclusively through world-class partners.</h2>
+      <p class="section-sub reveal delay1">
+        Hun Supply is not sold direct to consumer. We don’t chase customers. We equip the ones already moving forward.
+      </p>
+
+      <div class="block reveal delay2">
+        <h3>SELECT RETAIL NETWORK</h3>
+        <p>
+          Hun Supply is carried only by retailers who understand restraint, discipline, and permanence.
+          Stores where products are curated, not stocked. Spaces built from wood, stone, iron, and leather.
+        </p>
+        <p>
+          Every piece ships in reclaimed leather — used, weathered, earned. Minimal cost. Maximum meaning.
+          Because what has been tested always outlasts what is pristine.
+        </p>
+      </div>
+
+      <div style="height:16px;"></div>
+
+      <div class="stockists reveal">
+        <div class="stockists-head">
+          <div class="stockists-title">SELECT RETAILERS</div>
+          <div class="stockists-note">Curated • invitation • limited doors</div>
+        </div>
+
+        <div class="stockist-row">
+          <div>
+            <div class="stockist-name">Iron &amp; Leather Outfitters</div>
+            <div class="stockist-meta">Premium menswear • leather goods • grooming</div>
+          </div>
+          <div class="stockist-loc">
+            <strong>Location</strong>
+            Nashville, TN • USA
+          </div>
+        </div>
+
+        <div class="stockist-row">
+          <div>
+            <div class="stockist-name">Stone &amp; Timber Collective</div>
+            <div class="stockist-meta">Curated essentials • heritage brands • iron discipline</div>
+          </div>
+          <div class="stockist-loc">
+            <strong>Location</strong>
+            Austin, TX • USA
+          </div>
+        </div>
+
+        <div class="stockist-row">
+          <div>
+            <div class="stockist-name">The Foundry Provision House</div>
+            <div class="stockist-meta">Men’s grooming • minimal luxury • permanence</div>
+          </div>
+          <div class="stockist-loc">
+            <strong>Location</strong>
+            Toronto, ON • Canada
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MANIFESTO -->
+  <section id="manifesto">
+    <div class="section-inner">
+      <div class="section-symbol" aria-hidden="true"></div>
+      <div class="section-label reveal fast">Values</div>
+      <h2 class="section-title reveal">The Manifesto</h2>
+      <p class="section-sub reveal delay1">Replace this with your original manifesto block if you want it verbatim.</p>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section id="line">
+    <div class="section-inner">
+      <div class="section-symbol" aria-hidden="true"></div>
+      <div class="section-label reveal fast">The Line</div>
+      <h2 class="section-title reveal">Five products. Reclaimed leather satchels.</h2>
+      <p class="section-sub reveal delay1">
+        Every Hun Supply product arrives in a reclaimed leather satchel — used, weathered, earned.
+        Near-zero material cost with infinite soul.
+      </p>
+
+      <div class="products-grid">
+        <article class="product-card reveal fast delay1">
+          <div>
+            <div class="product-label">Bar One</div>
+            <div class="product-name">Earth Clay</div>
+            <p class="product-note">Bentonite clay and activated charcoal. The scent of wet soil after rain. Functional luxury in reclaimed leather.</p>
+          </div>
+          <div class="product-foot">CLAY • CHARCOAL • MINERAL</div>
+        </article>
+
+        <article class="product-card reveal fast delay2">
+          <div>
+            <div class="product-label">Bar Two</div>
+            <div class="product-name">Leather Smoke</div>
+            <p class="product-note">Raw hide and cold campfire oak. The scent of distance and earned solitude. Packaged in history.</p>
+          </div>
+          <div class="product-foot">HIDE • OAK TAR • ASH</div>
+        </article>
+
+        <article class="product-card reveal fast delay3">
+          <div>
+            <div class="product-label">Bar Three</div>
+            <div class="product-name">Pine Air</div>
+            <p class="product-note">Wild pine rosin and high-altitude fir. Sharp, clean, alive. Delivered in weathered leather with character.</p>
+          </div>
+          <div class="product-foot">PINE • RESIN • ALTITUDE</div>
+        </article>
+
+        <article class="product-card reveal fast delay1">
+          <div>
+            <div class="product-label">Oil</div>
+            <div class="product-name">Steppe Beard & Body</div>
+            <p class="product-note">One bottle. Hair, beard, skin. Cold-pressed oils and pine resin in matte black glass.</p>
+          </div>
+          <div class="product-foot">PINE • RESIN • VETIVER • CARRIER OILS</div>
+        </article>
+
+        <article class="product-card reveal fast delay2">
+          <div>
+            <div class="product-label">Balm</div>
+            <div class="product-name">Forge Balm</div>
+            <p class="product-note">Heavy-hold matte clay balm. Zero shine. All-day grip. Built for men who don’t stop to check their reflection.</p>
+          </div>
+          <div class="product-foot">CLAY • BEESWAX • CHARRED CEDAR</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRIBE -->
+  <section id="tribe">
+    <div class="section-inner">
+      <div class="section-symbol" aria-hidden="true"></div>
+      <div class="section-label reveal fast">The Tribe</div>
+      <h2 class="section-title reveal">Wholesale Access Gate</h2>
+      <p class="section-sub reveal delay1">
+        Hun Supply is wholesale-only. Tribe access is earned. If you run a premium store and your customers refuse to lose, apply.
+      </p>
+
+      <div class="gate reveal delay2">
+        <div class="gate-top">
+          <div class="gate-title">TRADE APPLICATION • INVITATION ONLY</div>
+          <div class="gate-badge"><span class="dot"></span> RESTRICTED ACCESS</div>
+        </div>
+
+        <div class="gate-body">
+          <div class="req">
+            <h4>We work with retailers who:</h4>
+            <ul>
+              <li><span class="check"></span>Curate (do not discount-stack)</li>
+              <li><span class="check"></span>Sell permanence: leather, stone, iron, restraint</li>
+              <li><span class="check"></span>Protect brand equity like it’s inventory</li>
+              <li><span class="check"></span>Understand “wholesale-only” means exactly that</li>
+            </ul>
+          </div>
+          <div class="req">
+            <h4>Trade terms (baseline):</h4>
+            <ul>
+              <li><span class="check"></span>No DTC distribution</li>
+              <li><span class="check"></span>No Amazon marketplace</li>
+              <li><span class="check"></span>No clearance culture</li>
+              <li><span class="check"></span>Premium placement, not shelf filler</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="form-wrap">
+          <div class="gate-title" style="margin-bottom:12px;">APPLICATION (TRADE)</div>
+
+          <form id="tradeForm">
+            <div class="form-grid">
+              <div class="field">
+                <label for="name">Name</label>
+                <input id="name" name="name" placeholder="Full name" required />
+              </div>
+              <div class="field">
+                <label for="store">Store</label>
+                <input id="store" name="store" placeholder="Store name" required />
+              </div>
+              <div class="field">
+                <label for="city">City</label>
+                <input id="city" name="city" placeholder="City / State / Province" required />
+              </div>
+              <div class="field">
+                <label for="website">Website</label>
+                <input id="website" name="website" placeholder="https://..." required />
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn-primary">
+                <span class="dot"></span>
+                SUBMIT&nbsp;APPLICATION
+              </button>
+              <div class="small-note">No DTC • no discount culture • response 2–5 business days</div>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-row">
+      <div>© 2024–2025 Hun Supply. All rights reserved.</div>
+      <div class="footer-oath">NO COMPROMISING • NO EXCEPTIONS • NO APOLOGIES</div>
+    </div>
+  </div>
+</footer>
+
+</div>
+
+<!-- PRIVATE ACCESS MODAL -->
+<div class="modal-backdrop" id="modalBackdrop"></div>
+<div class="modal" id="privateModal" aria-hidden="true">
+  <div class="modal-card">
+    <div class="modal-close" id="modalClose">Close</div>
+
+    <div class="modal-eyebrow">Restricted Access</div>
+    <div class="modal-title">Private Trade Entry</div>
+    <div class="modal-divider"></div>
+
+    <p class="modal-text">
+      Hun Supply is not sold online and never will be.
+      <br><br>
+      We partner with a small number of retailers who protect brand equity,
+      understand restraint, and sell permanence — not trend.
+      <br><br>
+      If that describes your store, you may proceed.
+    </p>
+
+    <div class="modal-actions">
+      <a href="#tribe" class="btn-primary" id="proceedTrade">
+        <span class="dot"></span>
+        ENTER&nbsp;APPLICATION
+      </a>
+      <button class="btn-secondary" id="cancelTrade">NOT FOR ME</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* Active nav highlight */
+(function(){
+  const links = Array.from(document.querySelectorAll('.nav-links a'));
+  const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+
+  const setActive = (id) => {
+    links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+  };
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) setActive(entry.target.id);
+    });
+  }, { threshold:0.55 });
+
+  sections.forEach(sec => obs.observe(sec));
+})();
+
+/* Reveal animations */
+(function(){
+  const els = Array.from(document.querySelectorAll('.reveal'));
+  const ro = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.classList.add('show');
+        ro.unobserve(e.target);
+      }
+    });
+  }, { threshold:0.18, rootMargin:"0px 0px -60px 0px" });
+
+  els.forEach(el => ro.observe(el));
+})();
+
+/* Cinematic Parallax drift */
+(function(){
+  const heroSym = document.querySelector('.hero-symbol');
+  const sectionSyms = Array.from(document.querySelectorAll('.section-symbol'));
+
+  let targetY = 0;
+  let currentY = 0;
+
+  const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
+
+  function onScroll(){
+    targetY = window.scrollY || 0;
+  }
+
+  function tick(){
+    currentY += (targetY - currentY) * 0.06; // smooth drift
+    const y = currentY;
+
+    if(heroSym){
+      const offset = clamp(y * 0.08, 0, 70);
+      heroSym.style.transform = `translate3d(0, ${offset}px, 0)`;
+    }
+
+    sectionSyms.forEach((el) => {
+      const rect = el.getBoundingClientRect();
+      const progress = (rect.top - window.innerHeight * 0.5);
+      const off = clamp(-progress * 0.04, -18, 18);
+      el.style.transform = `translate3d(0, ${off}px, 0)`;
+    });
+
+    requestAnimationFrame(tick);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+  tick();
+})();
+
+/* Trade form behavior (no backend): opens prefilled email */
+(function(){
+  const form = document.getElementById('tradeForm');
+  if(!form) return;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const name = (data.get('name') || '').toString().trim();
+    const store = (data.get('store') || '').toString().trim();
+    const city = (data.get('city') || '').toString().trim();
+    const website = (data.get('website') || '').toString().trim();
+
+    const subject = encodeURIComponent('Wholesale Access Application — Hun Supply');
+    const body = encodeURIComponent(
+`Name: ${name}
+Store: ${store}
+City: ${city}
+Website: ${website}
+
+Notes:
+- We understand Hun Supply is wholesale-only.
+- No DTC distribution.
+- No Amazon marketplace.
+- No discount culture.
+`
+    );
+
+    window.location.href = `mailto:trade@hun.supply?subject=${subject}&body=${body}`;
+  });
+})();
+
+/* PRIVATE ACCESS MODAL CONTROL */
+(function(){
+  const openers = document.querySelectorAll('a[href="#private-access"]');
+  const modal = document.getElementById('privateModal');
+  const backdrop = document.getElementById('modalBackdrop');
+  const closeBtn = document.getElementById('modalClose');
+  const cancelBtn = document.getElementById('cancelTrade');
+  const proceedBtn = document.getElementById('proceedTrade');
+
+  function openModal(){
+    modal.classList.add('show');
+    backdrop.classList.add('show');
+    document.body.style.overflow = 'hidden';
+    modal.setAttribute('aria-hidden','false');
+  }
+
+  function closeModal(){
+    modal.classList.remove('show');
+    backdrop.classList.remove('show');
+    document.body.style.overflow = '';
+    modal.setAttribute('aria-hidden','true');
+  }
+
+  openers.forEach(a=>{
+    a.addEventListener('click', e=>{
+      e.preventDefault();
+      openModal();
+    });
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+  cancelBtn.addEventListener('click', closeModal);
+  backdrop.addEventListener('click', closeModal);
+
+  // ESC to close
+  window.addEventListener('keydown', (e)=>{
+    if(e.key === 'Escape' && modal.classList.contains('show')) closeModal();
+  });
+
+  // proceed scrolls into tribe then closes
+  proceedBtn.addEventListener('click', ()=>{
+    closeModal();
+  });
+})();
+</script>
+
+</body>
+</html>
