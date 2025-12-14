@@ -43,6 +43,7 @@ body{
 }
 
 .page{min-height:100vh;display:flex;flex-direction:column;}
+
 /* ===== HEADER ===== */
 header{
   position:sticky; top:0; z-index:50;
@@ -135,6 +136,7 @@ header{
   box-shadow: 0 40px 110px rgba(0,0,0,.95);
   filter:saturate(1.05) contrast(1.05);
 }
+
 .dot{
   width:8px;height:8px;border-radius:50%;
   background:radial-gradient(circle at 30% 0%, #ffd7b7 0%, #c86232 55%, #2a1a12 100%);
@@ -155,10 +157,7 @@ header{
   transition:opacity .9s ease, transform .9s ease;
   will-change:opacity,transform;
 }
-.reveal.show{
-  opacity:1;
-  transform:translateY(0);
-}
+.reveal.show{opacity:1;transform:translateY(0);}
 .reveal.fast{ transition-duration:.65s; }
 .reveal.delay1{ transition-delay:.06s; }
 .reveal.delay2{ transition-delay:.12s; }
@@ -273,6 +272,7 @@ header{
   gap:12px;
   box-shadow:var(--shadow);
   transition:transform .20s, box-shadow .20s, border-color .20s;
+  cursor:pointer;
 }
 .btn-primary:hover{
   transform:translateY(-3px) scale(1.03);
@@ -300,20 +300,24 @@ header{
   color:var(--muted);
 }
 
-<div class="hero-visual reveal delay1">
-  <img src="IMG_8122.jpg" alt="Hun Supply Rider" class="rider-image">
-  <div class="hero-pill">
-    <span class="dot"></span>
-    WHOLESALE • RECLAIMED CRAFT • SELECT RETAIL
-  </div>
-</div>
-
+/* HERO VISUAL (fixed + valid) */
+.hero-visual{
+  position:relative;
+  border-radius:22px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.10);
+  min-height:520px;
+  box-shadow:0 42px 120px rgba(0,0,0,.92);
+  background:rgba(0,0,0,.18);
+}
 .hero-visual::before{
   content:"";
   position:absolute; inset:0;
   background:
     linear-gradient(to top, rgba(0,0,0,.92), rgba(0,0,0,.25)),
     radial-gradient(circle at 20% 0%, rgba(200,98,50,.10), transparent 55%);
+  z-index:2;
+  pointer-events:none;
 }
 .hero-visual::after{
   content:"";
@@ -321,6 +325,17 @@ header{
   border-radius:18px;
   border:1px solid rgba(255,255,255,.08);
   box-shadow:inset 0 0 35px rgba(0,0,0,.9);
+  z-index:3;
+  pointer-events:none;
+}
+.rider-image{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  position:absolute;
+  inset:0;
+  z-index:1;
 }
 .hero-pill{
   position:absolute;left:18px;bottom:18px;
@@ -331,6 +346,7 @@ header{
   color:#e7dcc6;
   display:inline-flex;align-items:center;gap:10px;
   backdrop-filter:blur(12px);
+  z-index:4;
 }
 
 /* ===== SECTIONS ===== */
@@ -442,6 +458,31 @@ section:not(.hero)::before{
   transform:translateY(-5px);
   border-color:rgba(255,255,255,.18);
   box-shadow:0 40px 95px rgba(0,0,0,.92);
+}
+.product-label{
+  font-size:10px;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:8px;
+}
+.product-name{
+  font-size:14px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  margin-bottom:10px;
+}
+.product-note{
+  color:#cbbfa6;
+  line-height:1.75;
+  font-size:13px;
+}
+.product-foot{
+  margin-top:14px;
+  font-size:10px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--muted);
 }
 
 /* ===== STOCKISTS (LUXURY LIST) ===== */
@@ -585,11 +626,7 @@ section:not(.hero)::before{
   color:#e7dcc6;
   margin-bottom:10px;
 }
-.req ul{
-  list-style:none;
-  display:grid;
-  gap:10px;
-}
+.req ul{list-style:none;display:grid;gap:10px;}
 .req li{
   display:flex;
   gap:10px;
@@ -620,11 +657,7 @@ section:not(.hero)::before{
 }
 @media(max-width:780px){ .form-grid{grid-template-columns:1fr;} }
 
-.field{
-  display:flex;
-  flex-direction:column;
-  gap:8px;
-}
+.field{display:flex;flex-direction:column;gap:8px;}
 label{
   font-size:10px;
   letter-spacing:.24em;
@@ -699,10 +732,7 @@ footer{
   transition:opacity .35s ease;
   z-index:2000;
 }
-.modal-backdrop.show{
-  opacity:1;
-  pointer-events:auto;
-}
+.modal-backdrop.show{opacity:1;pointer-events:auto;}
 
 .modal{
   position:fixed;
@@ -715,23 +745,18 @@ footer{
   pointer-events:none;
   transition:opacity .35s ease;
 }
-.modal.show{
-  opacity:1;
-  pointer-events:auto;
-}
+.modal.show{opacity:1;pointer-events:auto;}
 
 .modal-card{
   width:min(520px, calc(100% - 36px));
   border-radius:26px;
   border:1px solid rgba(255,255,255,.12);
-  background:
-    linear-gradient(180deg, rgba(10,12,16,.94), rgba(5,6,8,.98));
+  background:linear-gradient(180deg, rgba(10,12,16,.94), rgba(5,6,8,.98));
   box-shadow:0 60px 160px rgba(0,0,0,.95);
   padding:32px 30px 28px;
   position:relative;
   overflow:hidden;
 }
-
 .modal-card::before{
   content:"";
   position:absolute;
@@ -741,7 +766,6 @@ footer{
   mix-blend-mode:screen;
   pointer-events:none;
 }
-
 .modal-eyebrow{
   font-size:10px;
   letter-spacing:.34em;
@@ -749,33 +773,24 @@ footer{
   color:var(--muted);
   margin-bottom:14px;
 }
-
 .modal-title{
   font-size:22px;
   letter-spacing:.18em;
   text-transform:uppercase;
   margin-bottom:14px;
 }
-
 .modal-divider{
-  width:60px;
-  height:1px;
+  width:60px;height:1px;
   background:linear-gradient(to right, rgba(200,98,50,.75), transparent);
   margin-bottom:18px;
 }
-
 .modal-text{
   font-size:14px;
   line-height:1.75;
   color:#cbbfa6;
   margin-bottom:26px;
 }
-
-.modal-actions{
-  display:flex;
-  gap:14px;
-  flex-wrap:wrap;
-}
+.modal-actions{display:flex;gap:14px;flex-wrap:wrap;}
 
 .btn-secondary{
   border-radius:999px;
@@ -792,7 +807,6 @@ footer{
   color:var(--text);
   border-color:rgba(255,255,255,.28);
 }
-
 .modal-close{
   position:absolute;
   top:14px;
@@ -850,9 +864,9 @@ footer{
         <h1 class="hero-title">For modern hunters who refuse to lose.</h1>
 
         <p class="hero-sub">
-            Hun Supply partners exclusively with select retailers to equip modern nomads —
-            men who carry pressure without display. Builders, operators, founders.
-            Reclaimed leather, because character can’t be manufactured.
+          Hun Supply partners exclusively with select retailers to equip modern nomads —
+          men who carry pressure without display. Builders, operators, founders.
+          Reclaimed leather, because character can’t be manufactured.
         </p>
 
         <div class="hero-oath">
@@ -871,19 +885,17 @@ footer{
 
         <div class="hero-tagline">Exclusively available through select premium retail partners.</div>
       </div>
-<div class="hero-visual reveal delay1" aria-hidden="true"></div>
-  <img src="IMG_8122..png" alt="Hun Supply Rider" class="rider-image">
-  
-   
-  </div>
-</div>
 
-
-  
-      
-          
+      <!-- FIXED HERO VISUAL -->
+      <div class="hero-visual reveal delay1">
+        <!-- use the filename you actually have in git -->
+        <img src="./IMG_8122.png" alt="Hun Supply Rider" class="rider-image">
+        <div class="hero-pill">
+          <span class="dot"></span>
+          WHOLESALE • RECLAIMED CRAFT • SELECT RETAIL
         </div>
       </div>
+
     </div>
   </section>
 
@@ -1021,7 +1033,7 @@ footer{
         <article class="product-card reveal fast delay1">
           <div>
             <div class="product-label">Oil</div>
-            <div class="product-name">Steppe Beard & Body</div>
+            <div class="product-name">Steppe Beard &amp; Body</div>
             <p class="product-note">One bottle. Hair, beard, skin. Cold-pressed oils and pine resin in matte black glass.</p>
           </div>
           <div class="product-foot">PINE • RESIN • VETIVER • CARRIER OILS</div>
@@ -1203,7 +1215,7 @@ footer{
   }
 
   function tick(){
-    currentY += (targetY - currentY) * 0.06; // smooth drift
+    currentY += (targetY - currentY) * 0.06;
     const y = currentY;
 
     if(heroSym){
@@ -1289,15 +1301,13 @@ Notes:
   });
 
   closeBtn.addEventListener('click', closeModal);
-  cancelBtn.addEventListener('click', closeModal);
+  if(cancelBtn) cancelBtn.addEventListener('click', closeModal);
   backdrop.addEventListener('click', closeModal);
 
-  // ESC to close
   window.addEventListener('keydown', (e)=>{
     if(e.key === 'Escape' && modal.classList.contains('show')) closeModal();
   });
 
-  // proceed scrolls into tribe then closes
   proceedBtn.addEventListener('click', ()=>{
     closeModal();
   });
