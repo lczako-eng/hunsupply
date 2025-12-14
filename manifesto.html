@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HUN SUPPLY — Brand Bible</title>
+  <meta name="description" content="Hun Supply Brand Bible — Tools for Men Who Roam." />
+
+  <style>
+    :root{
+      --bg:#050608;
+      --bg-deep:#030304;
+      --border:#262a31;
+      --text:#f4eee2;
+      --muted:#a0947a;
+      --ember:#c86232;
+      --radius:14px;
+      --shadow:0 30px 85px rgba(0,0,0,.82);
+      --max:900px;
+      --card:rgba(8,10,12,.78);
+      --line:rgba(255,255,255,.10);
+      --line2:rgba(255,255,255,.06);
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:radial-gradient(circle at top,#1a1d24,var(--bg-deep));
+      color:var(--text);
+      line-height:1.55;
+    }
+
+    header{
+      position:sticky; top:0;
+      background:#050608ee;
+      border-bottom:1px solid var(--line2);
+      backdrop-filter: blur(10px);
+      z-index:10;
+    }
+
+    .wrap{max-width:var(--max); margin:0 auto; padding:18px 18px;}
+    .topbar{display:flex; align-items:center; justify-content:space-between; gap:12px;}
+    .brand{
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      font-weight:650;
+      font-size:12px;
+      color:var(--muted);
+      display:flex; align-items:center; gap:10px;
+    }
+
+    .btn{
+      display:inline-block;
+      text-decoration:none;
+      color:var(--text);
+      border:1px solid var(--line);
+      padding:10px 14px;
+      border-radius:999px;
+      background:transparent;
+      transition:transform .12s ease, border-color .12s ease;
+      font-size:12px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      white-space:nowrap;
+    }
+    .btn:hover{transform:translateY(-1px); border-color:rgba(255,255,255,.18);}
+
+    main{padding:36px 0 70px;}
+    h1{
+      font-size:34px;
+      letter-spacing:.02em;
+      margin:14px 0 8px;
+    }
+    .sub{
+      color:var(--muted);
+      max-width:70ch;
+      margin-bottom:24px;
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--line2);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:20px;
+      margin:14px 0;
+    }
+
+    h2{
+      font-size:14px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin-bottom:10px;
+    }
+    h3{
+      font-size:18px;
+      margin:6px 0 10px;
+      letter-spacing:.02em;
+    }
+
+    ul{padding-left:18px;}
+    li{margin:6px 0;}
+    .oath p{margin:8px 0; font-size:16px;}
+    .motto{
+      margin-top:14px;
+      padding-top:14px;
+      border-top:1px solid var(--line2);
+      color:var(--ember);
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      font-weight:700;
+      font-size:12px;
+    }
+
+    footer{color:var(--muted); font-size:12px; padding:22px 0 40px;}
+  </style>
+</head>
+
+<body>
+  <!-- BRAND BIBLE PAGE -->
+  <header>
+    <div class="wrap">
+      <div class="topbar">
+        <div class="brand">HUN SUPPLY</div>
+        <a class="btn" href="index.html">Back</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <h1>Brand Bible</h1>
+      <p class="sub">Tools for Men Who Roam.</p>
+
+      <section class="card">
+        <h2>Brand Essence</h2>
+        <h3>Core Idea</h3>
+        <p>Hun Supply is a nomadic, earth-born, ultra-masculine grooming house for men who refuse to lose.</p>
+        <p>We do not sell soap. We sell philosophy, identity, and discipline.</p>
+        <ul>
+          <li>Men who roam</li>
+          <li>Men who build</li>
+          <li>Men who carry their own weight</li>
+          <li>Men who aren’t afraid of pain</li>
+          <li>Men who live by their own rules</li>
+        </ul>
+      </section>
+
+      <section class="card oath">
+        <h2>Brand Philosophy</h2>
+        <h3>The Hun Oath</h3>
+        <p>A man is forged by what he endures.</p>
+        <p>Strength is earned, never purchased.</p>
+        <p>The earth provides everything you need.</p>
+        <p>Live by your own rules.</p>
+        <p>Carry only what you can defend.</p>
+        <p>Roam with purpose.</p>
+        <p>Stand unyielding.</p>
+        <p>Take nothing for granted.</p>
+        <p>Give nothing for free.</p>
+        <p>No compromising. No exceptions. No apologies.</p>
+        <div class="motto">No Compromising. No Exceptions. No Apologies.</div>
+      </section>
+
+      <section class="card">
+        <h2>Voice</h2>
+        <h3>Writing Rules</h3>
+        <ul>
+          <li>Minimal. Stoic. Direct. Earthy.</li>
+          <li>No jokes. No quirk. No fluff.</li>
+          <li>Short. Clipped. Evocative.</li>
+          <li>Never say: “bro”, “alpha”, “brotherhood”, “grit &amp; grind”, “artisan”, “handmade soap”.</li>
+          <li>Say instead: Tools. Work. Weathered. Earned. Used leather. Old soil.</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Product</h2>
+        <h3>The Rule</h3>
+        <p>Every product must feel like a tool a horseman would carry 1,000 years ago — if he lived today.</p>
+
+        <h3 style="margin-top:14px;">The Line</h3>
+        <ul>
+          <li><strong>Bar One — Earth Clay</strong> (wet soil after storm)</li>
+          <li><strong>Bar Two — Leather Smoke</strong> (raw hide, cold oak fire, ash, salt)</li>
+          <li><strong>Bar Three — Pine Air</strong> (wild pine resin, fir, altitude air)</li>
+          <li><strong>Steppe Oil</strong> — Beard &amp; Body (one bottle: hair, beard, skin)</li>
+          <li><strong>Forge Balm</strong> — Heavy clay balm (matte finish, zero shine)</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Retail</h2>
+        <h3>Core Position</h3>
+        <ul>
+          <li>Wholesale-only.</li>
+          <li>No direct-to-consumer.</li>
+          <li>No discounting.</li>
+          <li>Retailers must apply. Most will be declined.</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Non-Negotiables</h2>
+        <ul>
+          <li>Earth and leather must always be present</li>
+          <li>Tone remains stoic and disciplined</li>
+          <li>No bright colors</li>
+          <li>No trend chasing</li>
+          <li>Every product must feel like a tool</li>
+          <li>Packaging must look traveled</li>
+          <li>Masculinity is never apologized for</li>
+        </ul>
+      </section>
+
+      <footer>
+        <!-- Source: Hun Supply Brand Bible (clean Edition). -->
+      </footer>
+    </div>
+  </main>
+</body>
+</html>
