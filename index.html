@@ -920,6 +920,92 @@ footer{
   cursor:pointer;
 }
 .modal-close:hover{color:var(--text);}
+/* Desktop behavior stays the same */
+.rider-image{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  position:absolute;
+  inset:0;
+  z-index:1;
+}
+
+/* Your desktop “push” — keep it here (not inline) */
+.rider-shift{
+  transform: translateX(160px);
+}
+
+/* MOBILE: stop the scrunch by stacking + making rider smaller */
+@media (max-width: 900px){
+  .hero-inner{
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  /* make the rider behave like an actual image (not a full-bleed absolute layer) */
+  .rider-image{
+    position: relative;
+    inset: auto;
+    width: min(340px, 78vw);
+    height: auto;
+    max-height: 52vh;
+    object-fit: contain;
+    justify-self: center;
+    align-self: start;
+    margin-top: 10px;
+    z-index: 1;
+  }
+
+  /* kill the desktop translate on mobile */
+  .rider-shift{
+    transform: none !important;
+  }
+}
+/* Desktop behavior stays the same */
+.rider-image{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  position:absolute;
+  inset:0;
+  z-index:1;
+}
+
+/* Your desktop “push” — keep it here (not inline) */
+.rider-shift{
+  transform: translateX(160px);
+}
+
+/* MOBILE: stop the scrunch by stacking + making rider smaller */
+@media (max-width: 900px){
+  .hero-inner{
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  /* make the rider behave like an actual image (not a full-bleed absolute layer) */
+  .rider-image{
+    position: relative;
+    inset: auto;
+    width: min(340px, 78vw);
+    height: auto;
+    max-height: 52vh;
+    object-fit: contain;
+    justify-self: center;
+    align-self: start;
+    margin-top: 10px;
+    z-index: 1;
+  }
+
+  /* kill the desktop translate on mobile */
+  .rider-shift{
+    transform: none !important;
+  }
+}
+
+
 </style>
 </head>
 
@@ -994,10 +1080,9 @@ footer{
 
       
       <img src="./IMG_8122.png"
-      alt="Hun Supply Rider"
-      class="rider-image rider-shift"
-      style="transform: translateX(160px);">
- 
+  alt="Hun Supply Rider"
+  class="rider-image rider-shift">
+
       </div>
 
     </div>
