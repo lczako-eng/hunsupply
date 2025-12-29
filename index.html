@@ -162,6 +162,60 @@ header{
 .reveal.delay1{ transition-delay:.06s; }
 .reveal.delay2{ transition-delay:.12s; }
 .reveal.delay3{ transition-delay:.18s; }
+.foundation-divider{
+  width:120px;
+  height:1px;
+  margin:26px 0 22px;
+  background:linear-gradient(
+    to right,
+    transparent,
+    rgba(200,98,50,.75),
+    transparent
+  );
+}
+
+.foundation-call{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.foundation-line{
+  font-size:13px;
+  color:#cbbfa6;
+  letter-spacing:.12em;
+}
+
+.foundation-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-size:11px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:#f4eee2;
+  text-decoration:none;
+  padding:10px 14px 9px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.18);
+  background:rgba(8,10,12,.55);
+  backdrop-filter:blur(8px);
+  width:fit-content;
+  transition:transform .2s, box-shadow .2s, border-color .2s;
+}
+
+.foundation-cta:hover{
+  transform:translateY(-1px);
+  border-color:rgba(200,98,50,.55);
+  box-shadow:0 18px 50px rgba(0,0,0,.55);
+}
+
+.foundation-note{
+  font-size:10px;
+  letter-spacing:.26em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
 
 /* ===== HERO ===== */
 .hero{
@@ -1068,15 +1122,32 @@ footer{
     <div class="section-symbol" aria-hidden="true"></div>
 
     <div class="section-label reveal fast">Foundation</div>
-    <h2 class="section-title reveal">Nothing is rushed.</h2>
+   <h2 class="section-title reveal">Nothing is rushed.</h2>
 
-    <p class="section-sub reveal delay1">
-      Hun Supply is currently curating goods that meet our standards of material,
-      permanence, and restraint.
-      <br><br>
-      We don’t release products until they earn their place.
-      What remains will be released.
-    </p>
+<p class="section-sub reveal delay1">
+  Hun Supply is currently curating goods that meet our standards of material,
+  permanence, and restraint.
+  <br><br>
+  We don’t release products until they earn their place.
+  What remains will be released.
+</p>
+
+<div class="foundation-divider reveal delay2"></div>
+
+<div class="foundation-call reveal delay3">
+  <p class="foundation-line">
+    If you build something that belongs here,
+  </p>
+
+  <a href="mailto:info@hunsupply.com" class="foundation-cta">
+    Introduce your work →
+  </a>
+
+  <p class="foundation-note">
+    Leather • grooming • tools • objects of permanence
+  </p>
+</div>
+
   </div>
 </section>
 
